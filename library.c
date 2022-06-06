@@ -1,6 +1,59 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "header.h"
+
+/**
+Gibt eine Reihe zurück. Von oben nach unten, Reihe 1 - 9
+**/
+int getRow(struct Puzzle sudoku, int rowNr)
+{
+    int row[9];
+    for(int i = 0; i<9 ; i++)
+    {
+       row[i] = sudoku.Grid[rowNr-1][i];
+    }
+    return row;
+}
+
+/**
+Gibt eine Spalte zurück. Von links nach rechts, 1 - 9
+**/
+int getColumn(struct Puzzle sudoku, int columnNr)
+{
+    int column[9];
+    for(int i = 0; i<9 ; i++)
+    {
+        column[i] = sudoku.Grid[i][columnNr-1];
+    }
+    return column;
+}
+
+/**
+Gibt einen Block zurück. Von links oben nach rechts unten 1 - 9.
+**/
+int getBlock(struct Puzzle sudoku, int blockNr)
+{
+    int block[9];
+    int zaehler = 0;
+    double blockNrDouble = blockNr;
+
+    int row = floor((blockNrDouble-1) / 3);
+    int column = (blockNr-1) % 3;
+
+    for(int i = 0; i<3 ; i++)
+    {
+        for(int j = 0; j<3; j++)
+        {
+            block[zaehler] = sudoku.Grid[(row*3)+i][(column*3)+j];
+            zaehler++;
+        }
+    }
+
+    return block;
+}
+
+
 
 /**
 Diese Funktion befüllt das Sudoku-Grid mit Werten
