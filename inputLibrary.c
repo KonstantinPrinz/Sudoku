@@ -96,7 +96,7 @@ int ValidateRow(struct Input input)
     int rowNumbers[9] = GetNumbersOfRow(input.row); // Noch hinzuzufügende Funktion
     for(int i = 0; i < 9; i++)
     {
-        if (rowNumbers[i] == input.number)
+        if (rowNumbers[i] == input.number && input.number != 0)
        {
            return 0;
         }
@@ -126,7 +126,7 @@ int ValidateColumn(struct Input input)
     int columnNumbers[9] = GetNumbersOfColumn(input.column); // Noch hinzuzufügende Funktion
     for(int i = 0; i < 9; i++)
     {
-        if (columnNumbers[i] == input.number)
+        if (columnNumbers[i] == input.number && input.number != 0)
         {
            return 0;
         }
@@ -172,7 +172,7 @@ int ValidateSquare(struct Input input)
     int squareNumbers[9] = GetNumbersOfSquare(input.row, input.column); // Noch hinzuzufügende Funktion
     for(int i = 0; i < 9; i++)
     {
-        if (squareNumbers[i] == input.number)
+        if (squareNumbers[i] == input.number && input.number != 0)
         {
             return 0;
         }
