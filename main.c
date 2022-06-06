@@ -20,4 +20,6 @@ int main()
 
     Sudoku = fillSudoku(Sudoku, Raetsel);
     printsudoku(Sudoku);
+
+    GetInput(Sudoku);
 }
