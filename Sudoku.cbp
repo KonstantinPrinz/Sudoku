@@ -32,6 +32,9 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="header.h" />
+		<Unit filename="inputLibrary.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="library.c">
 			<Option compilerVar="CC" />
 		</Unit>
