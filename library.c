@@ -38,7 +38,8 @@ int getBlock(struct Puzzle sudoku, int blockNr)
     int zaehler = 0;
     double blockNrDouble = blockNr;
 
-    int row = floor((blockNrDouble-1) / 3);
+    int row = (int)floor((blockNrDouble-1) / 3);
+
     int column = (blockNr-1) % 3;
 
     for(int i = 0; i<3 ; i++)
@@ -47,6 +48,7 @@ int getBlock(struct Puzzle sudoku, int blockNr)
         {
             block[zaehler] = sudoku.Grid[(row*3)+i][(column*3)+j];
             zaehler++;
+
         }
     }
 
