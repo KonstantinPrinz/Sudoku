@@ -34,7 +34,7 @@ struct ValidatedInput GetInput(int sudoku[9][9])
     do
     {
         system("cls");
-        printsudoku(sudoku);
+        //printsudoku(sudoku);
         if(inputPassed == 0)
         {
             PrintErrorMessage();
@@ -93,14 +93,14 @@ int ValidateRow(struct Input input)
         return 0;
     }
 
-    int rowNumbers[9] = GetNumbersOfRow(input.row); // Noch hinzuzufügende Funktion
-    for(int i = 0; i < 9; i++)
-    {
-        if (rowNumbers[i] == input.number && input.number != 0)
-       {
-           return 0;
-        }
-     }
+    //int rowNumbers[9] = GetNumbersOfRow(input.row); // Noch hinzuzufügende Funktion
+    //for(int i = 0; i < 9; i++)
+    //{
+    //    if (rowNumbers[i] == input.number && input.number != 0)
+    //   {
+    //       return 0;
+    //    }
+    // }
 
     return 1;
 }
@@ -123,14 +123,14 @@ int ValidateColumn(struct Input input)
         return 0;
     }
 
-    int columnNumbers[9] = GetNumbersOfColumn(input.column); // Noch hinzuzufügende Funktion
-    for(int i = 0; i < 9; i++)
-    {
-        if (columnNumbers[i] == input.number && input.number != 0)
-        {
-           return 0;
-        }
-    }
+    //int columnNumbers[9] = GetNumbersOfColumn(input.column); // Noch hinzuzufügende Funktion
+    //for(int i = 0; i < 9; i++)
+    //{
+    //    if (columnNumbers[i] == input.number && input.number != 0)
+    //    {
+    //       return 0;
+    //    }
+    //}
 
     return 1;
 }
@@ -169,14 +169,14 @@ int ValidateSquare(struct Input input)
     input.column = input.column - '0';
     input.number = input.number - '0';
 
-    int squareNumbers[9] = GetNumbersOfSquare(input.row, input.column); // Noch hinzuzufügende Funktion
-    for(int i = 0; i < 9; i++)
-    {
-        if (squareNumbers[i] == input.number && input.number != 0)
-        {
-            return 0;
-        }
-    }
+    //int squareNumbers[9] = GetNumbersOfSquare(input.row, input.column); // Noch hinzuzufügende Funktion
+    //for(int i = 0; i < 9; i++)
+    //{
+    //    if (squareNumbers[i] == input.number && input.number != 0)
+    //    {
+    //        return 0;
+    //    }
+    //}
 
     return 1;
 }
