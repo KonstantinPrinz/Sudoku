@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "header.h"
+#include "menus.h"
 
 int main()
 {
@@ -22,4 +23,6 @@ int main()
     //printsudoku(Sudoku);
 
     //GetInput(Sudoku);
+    printMainMenu();
+    return 0;
 }
