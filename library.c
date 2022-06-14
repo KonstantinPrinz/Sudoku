@@ -6,7 +6,7 @@
 /**
 Gibt eine Reihe zurück. Von oben nach unten, Reihe 1 - 9
 **/
-int getRow(struct Puzzle sudoku, int rowNr)
+int* getRow(struct Puzzle sudoku, int rowNr)
 {
     int row[9];
     for(int i = 0; i<9 ; i++)
@@ -19,7 +19,7 @@ int getRow(struct Puzzle sudoku, int rowNr)
 /**
 Gibt eine Spalte zurück. Von links nach rechts, 1 - 9
 **/
-int getColumn(struct Puzzle sudoku, int columnNr)
+int* getColumn(struct Puzzle sudoku, int columnNr)
 {
     int column[9];
     for(int i = 0; i<9 ; i++)
@@ -32,7 +32,7 @@ int getColumn(struct Puzzle sudoku, int columnNr)
 /**
 Gibt einen Block zurück. Von links oben nach rechts unten 1 - 9.
 **/
-int getBlock(struct Puzzle sudoku, int blockNr)
+int* getBlock(struct Puzzle sudoku, int blockNr)
 {
     int block[9];
     int zaehler = 0;

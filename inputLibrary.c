@@ -8,14 +8,6 @@
 #define MAX_COLUMN 9
 #define MAX_NUMBER 9
 
-// function prototypes
-int ValidateRow(struct Input input);
-int ValidateColumn(struct Input input);
-int ValidateNumber(struct Input input);
-int ValidateSquare(struct Input input);
-int ValidateDigitsOnly(struct Input input);
-void PrintErrorMessage();
-
 /**
   * Diese Funktion führt Eingabeaufforderungen für alle 3 notwendigen
   * Eingaben eines Sudoku feldes durch (Reihe, Spalte, Zahl).
@@ -23,9 +15,9 @@ void PrintErrorMessage();
   * Bildschirm auszugeben.
   *
 **/
-struct ValidatedInput GetInput(int sudoku[9][9])
+struct ValidatedInput GetInput(struct Puzzle sudoku)
 {
-    struct Input input;
+    struct ValidatedInput input;
     input.row = 0;
     input.column = 0;
     input.number = 0;
@@ -42,36 +34,31 @@ struct ValidatedInput GetInput(int sudoku[9][9])
 
         // Eingabeaufforderung für die Reihe
         printf("Enter row: ");
-        scanf("%c", &input.row);
+        scanf("%i", &input.row);
         // Mehrmals "scanf()" hintereinander funktioniert nicht, ohne
         // ein "fflush(stdin)" nach jedem "scanf()".
         fflush(stdin);
 
         // Eingabeaufforderung für die Spalte
         printf("Enter column: ");
-        scanf("%c", &input.column);
+        scanf("%i", &input.column);
         fflush(stdin);
 
         // Eingabeaufforderung für die Zahl
         printf("Enter number: ");
-        scanf("%c", &input.number);
+        scanf("%i", &input.number);
         fflush(stdin);
 
         int digitsOnlyPassed = ValidateDigitsOnly(input);
         int numberPassed = ValidateNumber(input);
-        int columnPassed = ValidateColumn(input);
-        int rowPassed = ValidateRow(input);
-        int squarePassed = ValidateSquare(input);
+        int rowPassed = ValidateRow(input, sudoku);
+        int columnPassed = ValidateColumn(input, sudoku);
+        int squarePassed = ValidateSquare(input, sudoku);
         inputPassed = digitsOnlyPassed && columnPassed &&  rowPassed && numberPassed && squarePassed;
     }
     while(inputPassed == 0);
 
-    struct ValidatedInput validatedInput;
-    validatedInput.column = input.column;
-    validatedInput.row = input.row;
-    validatedInput.number = input.number;
-
-    return validatedInput;
+    return input;
 }
 
 /**
@@ -79,21 +66,18 @@ struct ValidatedInput GetInput(int sudoku[9][9])
   * Gibt bei fehlerhafter Eingabe 0, bei richtiger eine 1 zurück.
   *
 **/
-int ValidateRow(struct Input input)
+int ValidateRow(struct ValidatedInput input, struct Puzzle sudoku)
 {
-    // Zu integer umwandeln.
-    // Siehe "external sources" - Datei für stackoverflow link.
-    input.row = input.row - '0';
-    input.column = input.column - '0';
-    input.number = input.number - '0';
-
     if (input.row > MAX_ROW || input.row <= 0)
     {
         printf("Row: %c", input.row);
         return 0;
     }
-
-    int rowNumbers[9] = GetNumbersOfRow(input.row); // Noch hinzuzufügende Funktion
+    int rowNumbers[9];
+    for(int i = 0; i < 9; i++)
+    {
+        rowNumbers[i] = getRow(sudoku, input.row)[i]; // Noch hinzuzufügende Funktion
+    }
     for(int i = 0; i < 9; i++)
     {
         if (rowNumbers[i] == input.number && input.number != 0)
@@ -110,20 +94,17 @@ int ValidateRow(struct Input input)
   * Gibt bei fehlerhafter Eingabe 0, bei richtiger eine 1 zurück.
   *
 **/
-int ValidateColumn(struct Input input)
+int ValidateColumn(struct ValidatedInput input, struct Puzzle sudoku)
 {
-    // Zu integer umwandeln
-    // Siehe "external sources" - Datei für stackoverflow link.
-    input.row = input.row - '0';
-    input.column = input.column - '0';
-    input.number = input.number - '0';
-
     if (input.column > MAX_COLUMN || input.column <= 0)
     {
         return 0;
     }
-
-    int columnNumbers[9] = GetNumbersOfColumn(input.column); // Noch hinzuzufügende Funktion
+    int columnNumbers[9];
+    for(int i = 0; i < 9; i++)
+    {
+         columnNumbers[i] = getColumn(sudoku, input.column)[i]; // Noch hinzuzufügende Funktion
+    }
     for(int i = 0; i < 9; i++)
     {
         if (columnNumbers[i] == input.number && input.number != 0)
@@ -140,14 +121,8 @@ int ValidateColumn(struct Input input)
   * Gibt bei fehlerhafter Eingabe 0, bei richtiger eine 1 zurück.
   *
 **/
-int ValidateNumber(struct Input input)
+int ValidateNumber(struct ValidatedInput input)
 {
-    // Zu integer umwandeln
-    // Siehe "external sources" - Datei für stackoverflow link.
-    input.row = input.row - '0';
-    input.column = input.column - '0';
-    input.number = input.number - '0';
-
     if (input.number > MAX_NUMBER || input.number <= 0)
     {
         return 0;
@@ -161,15 +136,14 @@ int ValidateNumber(struct Input input)
   * Gibt bei fehlerhafter Eingabe 0, bei richtiger eine 1 zurück.
   *
 **/
-int ValidateSquare(struct Input input)
+int ValidateSquare(struct ValidatedInput input, struct Puzzle sudoku)
 {
-    // Zu integer umwandeln
-    // Siehe "external sources" - Datei für stackoverflow link.
-    input.row = input.row - '0';
-    input.column = input.column - '0';
-    input.number = input.number - '0';
+    int squareNumbers[9];
+    for(int i = 0; i < 9; i++)
+    {
+        squareNumbers[i] = getBlock(sudoku, getSquareNumber(input.row, input.column))[i]; // Noch hinzuzufügende Funktion
+    }
 
-    int squareNumbers[9] = GetNumbersOfSquare(input.row, input.column); // Noch hinzuzufügende Funktion
     for(int i = 0; i < 9; i++)
     {
         if (squareNumbers[i] == input.number && input.number != 0)
@@ -186,7 +160,7 @@ int ValidateSquare(struct Input input)
   * Gibt bei fehlerhafter Eingabe 0, bei richtiger eine 1 zurück.
   *
 **/
-int ValidateDigitsOnly(struct Input input)
+int ValidateDigitsOnly(struct ValidatedInput input)
 {
     if(!isdigit(input.number))
     {
@@ -204,6 +178,53 @@ int ValidateDigitsOnly(struct Input input)
     }
 
     return 1;
+}
+
+int getSquareNumber(int row, int column)
+{
+    if(column <= 3)
+    {
+        if(row <= 3)
+        {
+            return 1;
+        }
+        else if(row <= 6)
+        {
+            return 2;
+        }
+        else
+        {
+            return 3;
+        }
+    }else if(column <= 6)
+    {
+        if(row <= 3)
+        {
+            return 4;
+        }
+        else if(row <= 6)
+        {
+            return 5;
+        }
+        else
+        {
+            return 6;
+        }
+    }else
+    {
+        if(row <= 7)
+        {
+            return 1;
+        }
+        else if(row <= 6)
+        {
+            return 8;
+        }
+        else
+        {
+            return 9;
+        }
+    }
 }
 
 /**
