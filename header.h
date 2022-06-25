@@ -24,14 +24,15 @@ int menuNavigation(int input, int currentlySelected, int maxSelection);
 struct Puzzle showMenu(struct Puzzle sudoku);
 
 // Methoden für MainMenu
-int showMainMenu(struct Puzzle sudoku);
-void drawMainMenu();
+struct Puzzle showMainMenu(struct Puzzle sudoku);
+void drawMainMenu(int selection);
 
 // Methoden für DifficultyMenu
-int showDifficultyMenu(struct Puzzle sudoku);
+struct Puzzle showDifficultyMenu(struct Puzzle sudoku);
+void drawDifficultyMenu(int selection);
 
 // Methoden für GameMenu
-int showGameMenu(struct Puzzle sudoku);
+struct Puzzle showGameMenu(struct Puzzle sudoku);
 
 
 

@@ -6,10 +6,13 @@
 
 // Logic for the Main Menu
 // Sets the Gamestate in menus.c depending on the selected option
-int showMainMenu(struct Puzzle sudoku)
+struct Puzzle showMainMenu(struct Puzzle sudoku)
 {
+    // declaring of help variables
     int lastInput = 0;
     int currentSelection = 1;
+
+    // menu loop: wait for button press and resolve accordingly
     do
     {
         system("cls");
@@ -20,15 +23,17 @@ int showMainMenu(struct Puzzle sudoku)
     }
     while(lastInput != 5);
 
+    // resolve: When ENTER is pressed, set gamestate to advance to the next menu
     switch(currentSelection)
     {
         case 1:
-            return 2;
+            sudoku.Gamestate = 2;
         case 2:
-            return 4;
+            sudoku.Gamestate = 4;
         case 3:
-            return 0;
+            sudoku.Gamestate = 0;
     };
+    return sudoku;
 }
 
 // Draws the MainMenu and shows an arrow next to the currently selected option

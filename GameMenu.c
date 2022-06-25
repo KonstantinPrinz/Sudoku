@@ -4,7 +4,7 @@
 #include <windows.h>
 #include "header.h"
 
-int showGameMenu(struct Puzzle sudoku)
+struct Puzzle showGameMenu(struct Puzzle sudoku)
 {
-return 1;
+return sudoku;
 }

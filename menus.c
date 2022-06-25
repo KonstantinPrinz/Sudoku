@@ -8,13 +8,11 @@ struct Puzzle showMenu(struct Puzzle sudoku)
     switch(sudoku.Gamestate)
     {
         case 1:
-            sudoku.Gamestate = showMainMenu(sudoku);
+            sudoku = showMainMenu(sudoku);
         case 2:
-            sudoku.Gamestate = showDifficultyMenu(sudoku);
+            sudoku = showDifficultyMenu(sudoku);
         case 3:
-            sudoku.Gamestate = showGameMenu(sudoku);
-        default:
-            sudoku.Gamestate = 0;
+            sudoku = showGameMenu(sudoku);
     }
     return sudoku;
 };
