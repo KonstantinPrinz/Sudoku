@@ -1,28 +1,37 @@
 //STRUCTS:
-
-// Struct für die Einstellungen
-struct Settings
-{
-    int Difficulty;
-};
-
 // Struct für das gesamte Sudoku, inklusive Einstellungen
 struct Puzzle
 {
+    // Grid: Das Spielfeld
     int Grid[9][9];
-    struct Settings;
-    // Evtl. weitere Felder: z.B. für vorgegebene Felder
+
+    // Difficulty: 1 für Easy, 2 für Medium, 3 für Hard
+    int Difficulty;
+
+    // Gamestate: Das derzeitige Menü. 1 = Hauptmenü, 2 = Difficulty Selection, 3 = Gameplay
+    int Gamestate;
+
 };
 
 
 // ALLGEMEINE METHODEN:
 void printErrorMessage();
 int getInput();
+int menuNavigation(int input, int currentlySelected, int maxSelection);
 
 // MENUS:
-// Ausgabe der Menüs
-struct Puzzle initializeMenu(struct Puzzle sudoku);
+// Dictionary, welches je nach Gamestate ins nächste Menü weiterleitet
+struct Puzzle showMenu(struct Puzzle sudoku);
 
+// Methoden für MainMenu
+int showMainMenu(struct Puzzle sudoku);
+void drawMainMenu();
+
+// Methoden für DifficultyMenu
+int showDifficultyMenu(struct Puzzle sudoku);
+
+// Methoden für GameMenu
+int showGameMenu(struct Puzzle sudoku);
 
 
 

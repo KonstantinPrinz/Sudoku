@@ -6,13 +6,12 @@
 int main()
 {
     struct Puzzle sudoku;
+    sudoku.Gamestate = 1;
+
     // Menu
-    sudoku = initializeMenu(sudoku);
-
-
-    // Initialization
-    initializeGame(sudoku);
-
-    // Gameplay
+    while(sudoku.Gamestate > 0)
+    {
+        sudoku = showMenu(sudoku);
+    }
     return 0;
 }

@@ -5,6 +5,7 @@
 		<Option title="SudokuV2" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
+		<Option virtualFolders="GameStates/" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/SudokuV2" prefix_auto="1" extension_auto="1" />
@@ -31,8 +32,17 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="DifficultyMenu.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="GameStates/" />
+		</Unit>
+		<Unit filename="GameMenu.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="GameStates/" />
+		</Unit>
 		<Unit filename="MainMenu.c">
 			<Option compilerVar="CC" />
+			<Option virtualFolder="GameStates/" />
 		</Unit>
 		<Unit filename="header.h" />
 		<Unit filename="initialization.c">
