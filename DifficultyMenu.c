@@ -24,6 +24,7 @@ struct Puzzle showDifficultyMenu(struct Puzzle sudoku)
     if(lastInput == 6)
     {
         sudoku.Gamestate = 1;
+        return sudoku;
     }
 
     // set chosen difficulty and set new gamestate
@@ -36,8 +37,10 @@ struct Puzzle showDifficultyMenu(struct Puzzle sudoku)
             case 3:
                 sudoku.Difficulty = currentSelection;
                 sudoku.Gamestate = 3;
+                return sudoku;
             case 4:
                 sudoku.Gamestate = 1;
+                return sudoku;
         };
     }
     return sudoku;

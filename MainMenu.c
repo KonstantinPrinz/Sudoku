@@ -28,12 +28,14 @@ struct Puzzle showMainMenu(struct Puzzle sudoku)
     {
         case 1:
             sudoku.Gamestate = 2;
+            return sudoku;
         case 2:
             sudoku.Gamestate = 4;
+            return sudoku;
         case 3:
             sudoku.Gamestate = 0;
+            return sudoku;
     };
-    return sudoku;
 }
 
 // Draws the MainMenu and shows an arrow next to the currently selected option

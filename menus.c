@@ -9,12 +9,18 @@ struct Puzzle showMenu(struct Puzzle sudoku)
     {
         case 1:
             sudoku = showMainMenu(sudoku);
+            return sudoku;
         case 2:
             sudoku = showDifficultyMenu(sudoku);
+            return sudoku;
         case 3:
             sudoku = showGameMenu(sudoku);
-    }
-    return sudoku;
+            return sudoku;
+        default:
+            sudoku.Gamestate = 0;
+            return sudoku;
+    };
+
 };
 
 // Responsible for mapping Up / Down in Menus

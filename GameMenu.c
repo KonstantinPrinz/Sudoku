@@ -6,5 +6,5 @@
 
 struct Puzzle showGameMenu(struct Puzzle sudoku)
 {
-return sudoku;
+ printf("DENKST DU DAS IST EIN MOTHERFUCKING GAME!?");
 }
