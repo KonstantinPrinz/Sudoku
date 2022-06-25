@@ -9,6 +9,7 @@ struct Puzzle initializeMenu(struct Puzzle sudoku)
     do
     {
         system("cls");
+        printf("a");
 
     }
     while(again);
