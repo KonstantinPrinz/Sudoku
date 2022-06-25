@@ -10,9 +10,9 @@
 
 
 /**
-  * Diese Funktion führt Eingabeaufforderungen für alle 3 notwendigen
+  * Diese Funktion fï¿½hrt Eingabeaufforderungen fï¿½r alle 3 notwendigen
   * Eingaben eines Sudoku feldes durch (Reihe, Spalte, Zahl).
-  * Der Übergabeparameter dient legidlich dazu, das Sudoku auf dem
+  * Der ï¿½bergabeparameter dient legidlich dazu, das Sudoku auf dem
   * Bildschirm auszugeben.
   *
 **/
@@ -27,25 +27,25 @@ struct ValidatedInput GetInput(struct Puzzle sudoku)
     do
     {
         system("cls");
-        printsudoku(sudoku);
+        //printsudoku(sudoku);
         if(inputPassed == 0)
         {
             PrintErrorMessage();
         }
 
-        // Eingabeaufforderung für die Reihe
+        // Eingabeaufforderung fï¿½r die Reihe
         printf("Enter row: ");
         scanf("%c", &input.row);
         // Mehrmals "scanf()" hintereinander funktioniert nicht, ohne
         // ein "fflush(stdin)" nach jedem "scanf()".
         fflush(stdin);
 
-        // Eingabeaufforderung für die Spalte
+        // Eingabeaufforderung fï¿½r die Spalte
         printf("Enter column: ");
         scanf("%c", &input.column);
         fflush(stdin);
 
-        // Eingabeaufforderung für die Zahl
+        // Eingabeaufforderung fï¿½r die Zahl
         printf("Enter number: ");
         scanf("%c", &input.number);
         fflush(stdin);
@@ -65,8 +65,115 @@ struct ValidatedInput GetInput(struct Puzzle sudoku)
 }
 
 /**
-  * Prüft, ob nur Zahlen eingegeben worden sind.
-  * Gibt bei fehlerhafter Eingabe 0, bei richtiger eine 1 zurück.
+  * Prï¿½ft die Eingabe einer Reihe.
+  * Gibt bei fehlerhafter Eingabe 0, bei richtiger eine 1 zurï¿½ck.
+  *
+**/
+int ValidateRow(struct Input input)
+{
+    // Zu integer umwandeln.
+    // Siehe "external sources" - Datei fï¿½r stackoverflow link.
+    input.row = input.row - '0';
+    input.column = input.column - '0';
+    input.number = input.number - '0';
+
+    if (input.row > MAX_ROW || input.row <= 0)
+    {
+        printf("Row: %c", input.row);
+        return 0;
+    }
+
+    //int rowNumbers[9] = GetNumbersOfRow(input.row); // Noch hinzuzufï¿½gende Funktion
+    //for(int i = 0; i < 9; i++)
+    //{
+    //    if (rowNumbers[i] == input.number && input.number != 0)
+    //   {
+    //       return 0;
+    //    }
+    // }
+
+    return 1;
+}
+
+/**
+  * Prï¿½ft die Eingabe einer Spalte.
+  * Gibt bei fehlerhafter Eingabe 0, bei richtiger eine 1 zurï¿½ck.
+  *
+**/
+int ValidateColumn(struct Input input)
+{
+    // Zu integer umwandeln
+    // Siehe "external sources" - Datei fï¿½r stackoverflow link.
+    input.row = input.row - '0';
+    input.column = input.column - '0';
+    input.number = input.number - '0';
+
+    if (input.column > MAX_COLUMN || input.column <= 0)
+    {
+        return 0;
+    }
+
+    //int columnNumbers[9] = GetNumbersOfColumn(input.column); // Noch hinzuzufï¿½gende Funktion
+    //for(int i = 0; i < 9; i++)
+    //{
+    //    if (columnNumbers[i] == input.number && input.number != 0)
+    //    {
+    //       return 0;
+    //    }
+    //}
+
+    return 1;
+}
+
+/**
+  * Prï¿½ft die Eingabe einer Zahl fï¿½r das Sudoku-Feld.
+  * Gibt bei fehlerhafter Eingabe 0, bei richtiger eine 1 zurï¿½ck.
+  *
+**/
+int ValidateNumber(struct Input input)
+{
+    // Zu integer umwandeln
+    // Siehe "external sources" - Datei fï¿½r stackoverflow link.
+    input.row = input.row - '0';
+    input.column = input.column - '0';
+    input.number = input.number - '0';
+
+    if (input.number > MAX_NUMBER || input.number <= 0)
+    {
+        return 0;
+    }
+
+    return 1;
+}
+
+/**
+  * Prï¿½ft, ob die Eingaben fï¿½r das aktuelle Viereck (square) valide sind.
+  * Gibt bei fehlerhafter Eingabe 0, bei richtiger eine 1 zurï¿½ck.
+  *
+**/
+int ValidateSquare(struct Input input)
+{
+    // Zu integer umwandeln
+    // Siehe "external sources" - Datei fï¿½r stackoverflow link.
+    input.row = input.row - '0';
+    input.column = input.column - '0';
+    input.number = input.number - '0';
+
+    //int squareNumbers[9] = GetNumbersOfSquare(input.row, input.column); // Noch hinzuzufï¿½gende Funktion
+    //for(int i = 0; i < 9; i++)
+    //{
+    //    if (squareNumbers[i] == input.number && input.number != 0)
+    //    {
+    //        return 0;
+    //    }
+    //}
+
+    return 1;
+}
+
+/**
+  * Prï¿½ft, ob nur Zahlen eingegeben worden sind.
+  * Gibt bei fehlerhafter Eingabe 0, bei richtiger eine 1 zurï¿½ck.
   *
 **/
 int ValidateDigitsOnly(struct Input input)

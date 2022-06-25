@@ -40,3 +40,14 @@ struct ValidatedInput GetInput(struct Puzzle sudoku);
 int ValidateNumber(struct Input input);
 int ValidateDigitsOnly(struct Input input);
 void PrintErrorMessage();
+
+
+// Methoden für die Menüs
+void printMainMenu(struct Puzzle sptr);
+void printDifficultyMenu(struct Puzzle sptr);
+void printGame(struct Puzzle sptr);
+void printEnterNumber(struct Puzzle sptr);
+void printConfirmAbort(struct Puzzle sptr);
+
+
+void printErrorMessage();
