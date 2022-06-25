@@ -2,24 +2,17 @@
 #include <stdlib.h>
 #include <math.h>
 #include "header.h"
-#include "menus.h"
 
 int main()
 {
-    struct Puzzle Sudoku;
+    struct Puzzle sudoku;
+    // Menu
+    sudoku = initializeMenu(sudoku);
 
-    // Testwerte
-    int Raetsel[81] =           {0,4,0,1,0,0,0,8,0,
-                                0,0,0,0,0,0,0,9,0,
-                                7,0,0,0,2,0,0,0,0,
-                                0,0,0,4,0,6,0,0,0,
-                                0,0,0,0,0,0,0,0,7,
-                                0,5,0,0,0,8,4,0,0,
-                                6,0,0,3,0,0,8,0,0,
-                                0,0,0,0,1,0,2,0,0,
-                               4,0,2,0,0,0,0,0,3};
 
-    Sudoku = fillSudoku(Sudoku, Raetsel);
-    printMainMenu(Sudoku);
+    // Initialization
+    initializeGame(sudoku);
+
+    // Gameplay
     return 0;
 }

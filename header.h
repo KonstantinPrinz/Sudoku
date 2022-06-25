@@ -1,53 +1,38 @@
+//STRUCTS:
 
-
-struct ValidatedInput
+// Struct für die Einstellungen
+struct Settings
 {
-    int row;
-    int column;
-    int number;
+    int Difficulty;
 };
 
-struct Input
-{
-    char row;
-    char column;
-    char number;
-};
-
-// Struct fÃ¼r Sudoku-Raetsel
+// Struct für das gesamte Sudoku, inklusive Einstellungen
 struct Puzzle
 {
     int Grid[9][9];
-    // Evtl. weitere Felder: z.B. fÃ¼r vorgegebene Felder
+    struct Settings;
+    // Evtl. weitere Felder: z.B. für vorgegebene Felder
 };
 
-// Methoden zur Ausgabe von Reihen, Spalten, Kaestchen
-getRow(struct Puzzle, int);
-getColumn(struct Puzzle, int);
-getBlock(struct Puzzle, int);
 
-// Methode zum BefÃ¼llen des Raetsels
+// ALLGEMEINE METHODEN:
+void printErrorMessage();
+int getInput();
+
+// MENUS:
+// Ausgabe der Menüs
+struct Puzzle initializeMenu(struct Puzzle sudoku);
+
+
+
+
+
+// INITIALIZATION:
+// Methoden zum Befüllen des Raetsels
+struct Puzzle initializeGame(struct Puzzle);
 struct Puzzle fillSudoku(struct Puzzle, int[81]);
-struct ValidatedInput GetInput(struct Puzzle);
 
+// GAMEPLAY:
 // Methode zum Ausgeben des Raetsels
 void printsudoku(struct Puzzle);
 
-
-
-// Methoden zum Input
-struct ValidatedInput GetInput(struct Puzzle sudoku);
-int ValidateNumber(struct Input input);
-int ValidateDigitsOnly(struct Input input);
-void PrintErrorMessage();
-
-
-// Methoden fÃ¼r die MenÃ¼s
-void printMainMenu(struct Puzzle sptr);
-void printDifficultyMenu(struct Puzzle sptr);
-void printGame(struct Puzzle sptr);
-void printEnterNumber(struct Puzzle sptr);
-void printConfirmAbort(struct Puzzle sptr);
-
-
-void printErrorMessage();
