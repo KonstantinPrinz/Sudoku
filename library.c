@@ -32,27 +32,28 @@ int getColumn(struct Puzzle sudoku, int columnNr)
 /**
 Gibt einen Block zurück. Von links oben nach rechts unten 1 - 9.
 **/
-int getBlock(struct Puzzle sudoku, int blockNr)
+int getSquare(struct Puzzle sudoku, int rowNr, int columnNr)
 {
-    int block[9];
+    int square[9];
     int zaehler = 0;
-    double blockNrDouble = blockNr;
 
-    int row = (int)floor((blockNrDouble-1) / 3);
+    // der Double wird benötigt für die folgende "floor"-Berechnung. Es werden dafür Kommazahlen benötigt.
+    double rowHelper = rowNr;
+    int startRow = (int)floor((rowHelper-1) / 3);
 
-    int column = (blockNr-1) % 3;
+    int startColumn = (columnNr-1) % 3;
 
     for(int i = 0; i<3 ; i++)
     {
         for(int j = 0; j<3; j++)
         {
-            block[zaehler] = sudoku.Grid[(row*3)+i][(column*3)+j];
+            square[zaehler] = sudoku.Grid[(startRow*3)+i][(startColumn*3)+j];
             zaehler++;
 
         }
     }
 
-    return block;
+    return square;
 }
 
 

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "header.h"
+#include "menus.h"
 
 int main()
 {
@@ -16,10 +17,9 @@ int main()
                                 0,5,0,0,0,8,4,0,0,
                                 6,0,0,3,0,0,8,0,0,
                                 0,0,0,0,1,0,2,0,0,
-                                4,0,2,0,0,0,0,0,3};
+                               4,0,2,0,0,0,0,0,3};
 
     Sudoku = fillSudoku(Sudoku, Raetsel);
-    printsudoku(Sudoku);
-
-    GetInput(Sudoku);
+    printMainMenu(Sudoku);
+    return 0;
 }
