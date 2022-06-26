@@ -8,18 +8,46 @@ Diese Funktion startet den Initialisierungsvorgang
 **/
 struct Puzzle initializeGame(struct Puzzle Sudoku)
 {
-    // Testwerte
-    int Raetsel[81] =           {0,2,3,4,5,6,7,8,9,
-                                4,5,6,7,8,9,1,2,3,
-                                7,8,9,1,2,3,4,5,6,
-                                2,3,4,5,6,7,8,9,1,
-                                5,6,7,8,9,1,2,3,4,
-                                8,9,1,2,3,4,5,6,7,
-                                3,4,5,6,7,8,9,1,2,
-                                6,7,8,9,1,2,3,4,5,
-                                9,1,2,3,4,5,6,7,8};
+        if(Sudoku.Difficulty == 1)
+        {
+             int Raetsel[81] =      {0,0,0,7,5,0,4,8,9,
+                                    0,4,5,6,9,0,0,1,8,
+                                    0,0,6,0,0,0,7,0,0,
+                                    9,8,0,2,0,0,0,0,0,
+                                    2,0,7,1,0,8,0,0,0,
+                                    0,0,3,0,0,5,8,0,7,
+                                    4,2,0,0,6,7,1,8,0,
+                                    5,0,0,0,2,0,0,7,4,
+                                    3,0,0,5,1,0,9,0,2};
+            Sudoku = fillSudoku(Sudoku, Raetsel);
+        }
+        else if(Sudoku.Difficulty == 2)
+        {
+             int Raetsel[81] =     {0,0,0,5,0,0,0,0,2,
+                                    0,7,0,6,0,0,0,4,0,
+                                    4,2,0,0,0,1,0,9,0,
+                                    0,4,0,1,0,0,0,0,6,
+                                    0,0,0,0,0,0,0,0,0,
+                                    0,3,0,0,9,0,0,7,0,
+                                    5,0,2,0,0,0,0,0,0,
+                                    0,0,3,0,0,5,0,0,7,
+                                    0,1,0,3,0,0,0,0,8};
+            Sudoku = fillSudoku(Sudoku, Raetsel);
+        }
+        else if(Sudoku.Difficulty == 3)
+        {
+             int Raetsel[81] =     {0,4,0,8,0,0,0,0,6,
+                                    0,0,1,0,0,6,0,0,4,
+                                    0,0,6,3,0,9,8,0,0,
+                                    2,5,0,6,0,3,0,0,0,
+                                    0,0,0,0,0,0,0,0,0,
+                                    0,8,7,0,0,0,0,4,0,
+                                    0,0,0,0,9,0,7,0,0,
+                                    0,0,0,0,0,4,0,1,0,
+                                    0,0,0,0,0,1,0,0,5};
+            Sudoku = fillSudoku(Sudoku, Raetsel);
+        }
 
-    Sudoku = fillSudoku(Sudoku, Raetsel);
     Sudoku.CursorX = 0;
     Sudoku.CursorY = 0;
     Sudoku.Initialized = 1;

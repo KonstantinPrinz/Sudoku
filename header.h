@@ -16,7 +16,7 @@ struct Puzzle
     // Difficulty: 1 für Easy, 2 für Medium, 3 für Hard
     int Difficulty;
 
-    // Gamestate: Das derzeitige Menü. 1 = Hauptmenü, 2 = Difficulty Selection, 3 = Gameplay, 4 = Hilfeseite
+    // Gamestate: Das derzeitige Menü. 1 = Hauptmenü, 2 = Difficulty Selection, 3 = Gameplay, 4 = Hilfeseite, 5 = Game Over
     int Gamestate;
 
     // Wurde ein Sudoku geladen? Wichtig für das Fortsetzen eines Puzzles.
@@ -25,11 +25,11 @@ struct Puzzle
 
 
 // ALLGEMEINE METHODEN:
-void printErrorMessage();
 int getInput();
-int menuNavigation(int input, int currentlySelected, int maxSelection);
+
 
 // MENUS:
+int menuNavigation(int input, int currentlySelected, int maxSelection);
 // Dictionary, welches je nach Gamestate ins nächste Menü weiterleitet
 struct Puzzle showMenu(struct Puzzle sudoku);
 
