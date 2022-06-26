@@ -96,14 +96,14 @@ int checkBlocks(struct Puzzle sudoku)
         //      x = floor(7/3) * 3 = 6
         //      y = (7 % 3) * 3 = 3
         double rowHelper = (double)i;
-        int x = (int)floor(rowHelper/3)*3;
-        int y = (i % 3) * 3;
-        int xTarget = x+3;
-        int yTarget = y+3;
+        int xStart = (int)floor(rowHelper/3)*3;
+        int yStart = (i % 3) * 3;
+        int xTarget = xStart+3;
+        int yTarget = yStart+3;
 
-        for(x; x<xTarget; x++)
+        for(int x = xStart; x<xTarget; x++)
         {
-            for(y; y<yTarget; y++)
+            for(int y = yStart; y<yTarget; y++)
             {
                 if(block[(sudoku.Grid[x][y])-1] == 0)
                 {
