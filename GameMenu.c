@@ -12,12 +12,12 @@ struct Puzzle showGameMenu(struct Puzzle sudoku)
     // Deklarierung der Hilfsvariablen
     int lastInput = 0;
 
-
     do
     {
         drawSudoku(sudoku);
-        lastInput = getInput();
-    } while(lastInput != 6);
+        sudoku = resolveButtonPress(sudoku);
+
+    } while(sudoku.Gamestate == 3);
 
     sudoku.Gamestate = 1;
     return sudoku;

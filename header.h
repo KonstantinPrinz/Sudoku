@@ -47,7 +47,8 @@ struct Puzzle showHelpMenu(struct Puzzle sudoku);
 
 // Methoden für GameMenu
 struct Puzzle showGameMenu(struct Puzzle sudoku);
-
+struct Puzzle resolveButtonPress(struct Puzzle sudoku);
+int changeCursor(int value, int cursor);
 
 
 // INITIALIZATION:

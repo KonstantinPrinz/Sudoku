@@ -4,8 +4,8 @@
 #include "header.h"
 
  // gets next input:
- // returns 1 for UP, 2 for DOWN, 3 for RIGHT and 4 for LEFT, 5 for ENTER, 6 for ESC, 7 for ENTF, 0 for invalid entries
- //
+ // returns 1 for UP, 2 for DOWN, 3 for LEFT and 4 for RIGHT, 5 for ENTER, 6 for ESC, 7 for ENTF, 0 for invalid entries
+ // 10 for 0, 11 for 1, 12 for 2 [...] 19 for 9
  int getInput ()
  {
      // getch() has to be called twice.
@@ -24,11 +24,11 @@
         // DOWN
         case 80:
            return 2;
-        // RIGHT
-        case 77:
-           return 3;
         // LEFT
         case 75:
+           return 3;
+        // RIGHT
+        case 77:
            return 4;
         // ENTER
         case 13:
@@ -39,8 +39,38 @@
         // ENTF
         case 83:
             return 7;
+        // 0
+        case 48:
+            return 10;
+        // 1
+        case 49:
+            return 11;
+        // 2
+        case 50:
+            return 12;
+        // 3
+        case 51:
+            return 13;
+        // 4
+        case 52:
+            return 14;
+        // 5
+        case 53:
+            return 15;
+         // 6
+        case 54:
+            return 16;
+        // 7
+        case 55:
+            return 17;
+        // 8
+        case 56:
+            return 18;
+        // 9
+        case 57:
+            return 19;
        default:
-        return 0;
+            return 0;
        }
  }
 

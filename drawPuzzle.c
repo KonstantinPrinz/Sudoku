@@ -11,7 +11,7 @@ void drawSudoku(struct Puzzle Sudoku)
     {
         if(row % 3 == 0 || row == 0)
         {
-            printf("  +---------+---------+---------+\n");
+            printf("+---------+---------+---------+\n");
         }
         for(int col = 0; col < 9; col++)
         {
@@ -24,7 +24,7 @@ void drawSudoku(struct Puzzle Sudoku)
         printf("|");
         printf("\n");
     }
-    printf("  +---------+---------+---------+\n");
+    printf("+---------+---------+---------+\n");
 }
 
 // Gibt eine Nummer aus, je nachdem ob die Nummer vorgegeben ist oder ob der Cursor dort steht.

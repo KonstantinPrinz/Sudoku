@@ -66,6 +66,10 @@
 		<Unit filename="menus.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="navigationPuzzle.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="GameStates/Gameplay/" />
+		</Unit>
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
