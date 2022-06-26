@@ -6,5 +6,19 @@
 
 struct Puzzle showGameMenu(struct Puzzle sudoku)
 {
- printf("DENKST DU DAS IST EIN MOTHERFUCKING GAME!?");
+    // Initialization
+    sudoku = initializeGame(sudoku);
+
+    // Deklarierung der Hilfsvariablen
+    int lastInput = 0;
+
+
+    do
+    {
+        drawSudoku(sudoku);
+        lastInput = getInput();
+    } while(lastInput != 6);
+
+    sudoku.Gamestate = 1;
+    return sudoku;
 }

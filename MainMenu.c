@@ -18,7 +18,7 @@ struct Puzzle showMainMenu(struct Puzzle sudoku)
         system("cls");
         drawMainMenu(currentSelection);
         lastInput = getInput();
-        currentSelection = menuNavigation(lastInput, currentSelection, 3);
+        currentSelection = menuNavigation(lastInput, currentSelection, 4);
 
     }
     while(lastInput != 5);
@@ -30,9 +30,17 @@ struct Puzzle showMainMenu(struct Puzzle sudoku)
             sudoku.Gamestate = 2;
             return sudoku;
         case 2:
+            if(sudoku.Initialized == 1)
+            {
+                sudoku.Gamestate = 3;
+                return sudoku;
+            }
+            else
+                return sudoku;
+        case 3:
             sudoku.Gamestate = 4;
             return sudoku;
-        case 3:
+        case 4:
             sudoku.Gamestate = 0;
             return sudoku;
     };
@@ -50,14 +58,20 @@ void drawMainMenu(int selection)
     else
         printf("    New game\n");
 
+
     if(selection == 2)
-        printf(" -> Load game\n");
+        printf(" -> Continue\n");
     else
-        printf("    Load game\n");
+        printf("    Continue\n");
+
+    if(selection == 3)
+        printf(" -> Help\n");
+    else
+        printf("    Help\n");
 
     printf("\n");
 
-    if(selection == 3)
+    if(selection == 4)
         printf(" -> Exit\n");
     else
         printf("    Exit\n");

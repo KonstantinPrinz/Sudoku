@@ -16,6 +16,9 @@ struct Puzzle showMenu(struct Puzzle sudoku)
         case 3:
             sudoku = showGameMenu(sudoku);
             return sudoku;
+        case 4:
+            sudoku = showHelpMenu(sudoku);
+            return sudoku;
         default:
             sudoku.Gamestate = 0;
             return sudoku;

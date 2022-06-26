@@ -7,6 +7,7 @@ int main()
 {
     struct Puzzle sudoku;
     sudoku.Gamestate = 1;
+    sudoku.Initialized = 0;
 
     // Menu
     while(sudoku.Gamestate > 0)

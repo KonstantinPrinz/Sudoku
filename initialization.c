@@ -20,6 +20,9 @@ struct Puzzle initializeGame(struct Puzzle Sudoku)
                                4,0,2,0,0,0,0,0,3};
 
     Sudoku = fillSudoku(Sudoku, Raetsel);
+    Sudoku.CursorX = 0;
+    Sudoku.CursorY = 0;
+    Sudoku.Initialized = 1;
     return Sudoku;
 };
 
@@ -33,7 +36,15 @@ struct Puzzle fillSudoku(struct Puzzle Sudoku, int Ziffern[81])
     {
         for(int j=0; j<9; j++)
         {
+            // Füllen des Grids
             Sudoku.Grid[i][j] = Ziffern[currentZiffer];
+
+            // Füllen des DefaultGrids
+            if(Ziffern[currentZiffer] == 0)
+                Sudoku.DefaultGrid[i][j] = 0;
+            else
+                Sudoku.DefaultGrid[i][j] = 1;
+
             currentZiffer++;
         }
     }
