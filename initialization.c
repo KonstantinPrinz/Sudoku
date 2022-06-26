@@ -4,11 +4,11 @@
 #include "header.h"
 
 /**
-Diese Funktion startet den Initialisierungsvorgang
+This Funktion starts the initialisation
 **/
 struct Puzzle initializeGame(struct Puzzle Sudoku)
 {
-        if(Sudoku.Difficulty == 1)
+        if(Sudoku.Difficulty == 1) //Easy
         {
              int Raetsel[81] =      {0,0,0,7,5,0,4,8,9,
                                     0,4,5,6,9,0,0,1,8,
@@ -21,7 +21,7 @@ struct Puzzle initializeGame(struct Puzzle Sudoku)
                                     3,0,0,5,1,0,9,0,2};
             Sudoku = fillSudoku(Sudoku, Raetsel);
         }
-        else if(Sudoku.Difficulty == 2)
+        else if(Sudoku.Difficulty == 2) //Medium
         {
              int Raetsel[81] =     {0,0,0,5,0,0,0,0,2,
                                     0,7,0,6,0,0,0,4,0,
@@ -34,7 +34,7 @@ struct Puzzle initializeGame(struct Puzzle Sudoku)
                                     0,1,0,3,0,0,0,0,8};
             Sudoku = fillSudoku(Sudoku, Raetsel);
         }
-        else if(Sudoku.Difficulty == 3)
+        else if(Sudoku.Difficulty == 3) //Hard
         {
              int Raetsel[81] =     {0,4,0,8,0,0,0,0,6,
                                     0,0,1,0,0,6,0,0,4,
@@ -55,7 +55,7 @@ struct Puzzle initializeGame(struct Puzzle Sudoku)
 };
 
 /**
-Diese Funktion befüllt das Sudoku-Grid mit Werten
+This funktion fills the Sudoku with Values
 **/
 struct Puzzle fillSudoku(struct Puzzle Sudoku, int Ziffern[81])
 {
@@ -64,10 +64,10 @@ struct Puzzle fillSudoku(struct Puzzle Sudoku, int Ziffern[81])
     {
         for(int j=0; j<9; j++)
         {
-            // Füllen des Grids
+            // Filling of the Grid
             Sudoku.Grid[i][j] = Ziffern[currentZiffer];
 
-            // Füllen des DefaultGrids
+            // Filling of the DefaulGrid
             if(Ziffern[currentZiffer] == 0)
                 Sudoku.DefaultGrid[i][j] = 0;
             else

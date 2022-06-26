@@ -1,67 +1,67 @@
 //STRUCTS:
-// Struct für das gesamte Sudoku, inklusive Einstellungen
+// Struct for the whole Sudoku, inclusive settings
 struct Puzzle
 {
-    // Grid: Das derzeitige Spielfeld
+    // Grid: The current Field
     int Grid[9][9];
 
-    // Die vorgegebenen und nicht veränderbaren Ziffern
+    // The given Sudoku
     int DefaultGrid[9][9];
 
 
-    // Methoden für X- und Y-Koordinate des derzeit ausgewählten Felds und die derzeit ausgewählte Zahl
+    // Methods for X- und Y-Koordinates of the selected field an number
     int CursorX;
     int CursorY;
 
-    // Difficulty: 1 für Easy, 2 für Medium, 3 für Hard
+    // Difficulty: 1 for Easy, 2 for Medium, 3 for Hard
     int Difficulty;
 
-    // Gamestate: Das derzeitige Menü. 1 = Hauptmenü, 2 = Difficulty Selection, 3 = Gameplay, 4 = Hilfeseite, 5 = Game Over
+    // Gamestate: The current Menü. 1 = Mainmenu, 2 = Difficulty Selection, 3 = Gameplay, 4 = Help, 5 = Game Over
     int Gamestate;
 
-    // Wurde ein Sudoku geladen? Wichtig für das Fortsetzen eines Puzzles.
+    // is the Sudoku loaded? important for continuing a Sudoku.
     int Initialized;
 };
 
 
-// ALLGEMEINE METHODEN:
+// GENERAL METHODS:
 int getInput();
 
 
 // MENUS:
 int menuNavigation(int input, int currentlySelected, int maxSelection);
-// Dictionary, welches je nach Gamestate ins nächste Menü weiterleitet
+// Dictionary, forwards you depending on the current GameState to the next menu
 struct Puzzle showMenu(struct Puzzle sudoku);
 
-// Methoden für MainMenu
+// Methods for MainMenu
 struct Puzzle showMainMenu(struct Puzzle sudoku);
 void drawMainMenu(int selection);
 
-// Methoden für DifficultyMenu
+// Methods for DifficultyMenu
 struct Puzzle showDifficultyMenu(struct Puzzle sudoku);
 void drawDifficultyMenu(int selection);
 
-// Methoden für das Hilfemenü
+// Methods for das Hilfemenü
 struct Puzzle showHelpMenu(struct Puzzle sudoku);
 
-// Methoden für GameMenu
+// Methods for GameMenu
 struct Puzzle showGameMenu(struct Puzzle sudoku);
 struct Puzzle resolveButtonPress(struct Puzzle sudoku);
 int changeCursor(int value, int cursor);
 
 
 // INITIALIZATION:
-// Methoden zum Befüllen des Raetsels
+// Methods to Fill the Sudoku
 struct Puzzle initializeGame(struct Puzzle);
 struct Puzzle fillSudoku(struct Puzzle, int[81]);
 
 // GAMEPLAY:
-// Methode zum Ausgeben des Raetsels
+// Methods to print the Sudoku
 void drawSudoku(struct Puzzle);
 void printNumber(int row, int column, struct Puzzle Sudoku);
 int cursorCheck(int row, int cursorRow, int column, int cursorColumn);
 
-// Methoden zum completionCheck
+// Methods for completionCheck
 struct Puzzle checkCompletion(struct Puzzle sudoku);
 int checkRows(struct Puzzle sudoku);
 int checkColumns(struct Puzzle sudoku);

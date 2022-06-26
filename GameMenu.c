@@ -9,7 +9,7 @@ struct Puzzle showGameMenu(struct Puzzle sudoku)
     // Initialization
     sudoku = initializeGame(sudoku);
 
-    // Deklarierung der Hilfsvariablen
+    // Deklaration of a temporary-variable
     int lastInput = 0;
 
     do
@@ -20,7 +20,7 @@ struct Puzzle showGameMenu(struct Puzzle sudoku)
 
     } while(sudoku.Gamestate == 3);
 
-    // Check, ob das Sudoku vollständig gelöst wurde und Anzeige des Siegesbildschirms
+    // Checks, if the Sudoku if correct and displays the victory screen
     if(sudoku.Gamestate == 5)
     {
         printf("\n\nSudoku Solved!\n   YOU WON!!\nPress any button to return to the main menu!");

@@ -4,6 +4,7 @@
 #include <windows.h>
 #include "header.h"
 
+// Draws the Sudoku every time the method is called
 void drawSudoku(struct Puzzle Sudoku)
 {
     system("cls");
@@ -27,14 +28,14 @@ void drawSudoku(struct Puzzle Sudoku)
     printf("+---------+---------+---------+\n");
 }
 
-// Gibt eine Nummer aus, je nachdem ob die Nummer vorgegeben ist oder ob der Cursor dort steht.
-// Liste für ColorCodes: https://www.codeproject.com/Tips/5255355/How-to-Put-Color-on-Windows-Console
+// Gives out a number depending on the given number or if the cursor is there.
+// List of ColorCodes: https://www.codeproject.com/Tips/5255355/How-to-Put-Color-on-Windows-Console
 void printNumber(int row, int column, struct Puzzle Sudoku)
 {
-    // Wenn die Zahl 0 ist
+    // If number is 0
     if(Sudoku.Grid[row][column] == 0)
     {
-        // Check, ob der Cursor hier steht
+        // Check, if the cursor is in the field
         if(cursorCheck(row, Sudoku.CursorY, column, Sudoku.CursorX))
         {
             printf("\033[47m\033[30m . \033[0m");
@@ -44,13 +45,13 @@ void printNumber(int row, int column, struct Puzzle Sudoku)
             printf(" . ");
         }
     }
-    // Wenn die Zahl nicht 0 ist
+    // If number is not 0
     else
     {
-        // Wenn der Cursor darauf steht
+        // If cursor is on the field
         if(cursorCheck(row, Sudoku.CursorY, column, Sudoku.CursorX))
         {
-            // Wenn das Feld ein vorgegebenes ist
+            // If the field is given
             if(Sudoku.DefaultGrid[row][column])
             {
                 printf("\033[47m\033[91m %i \033[0m", Sudoku.Grid[row][column]);
@@ -62,7 +63,7 @@ void printNumber(int row, int column, struct Puzzle Sudoku)
         }
         else
         {
-            // Wenn das Feld vorgegeben ist
+            // If the field is given
             if(Sudoku.DefaultGrid[row][column])
             {
                 printf("\033[91m %i \033[0m", Sudoku.Grid[row][column]);
