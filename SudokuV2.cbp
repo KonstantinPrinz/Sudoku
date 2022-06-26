@@ -48,6 +48,10 @@
 			<Option compilerVar="CC" />
 			<Option virtualFolder="GameStates/" />
 		</Unit>
+		<Unit filename="completionCheck.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="GameStates/Gameplay/" />
+		</Unit>
 		<Unit filename="drawPuzzle.c">
 			<Option compilerVar="CC" />
 			<Option virtualFolder="GameStates/Gameplay/" />

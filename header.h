@@ -12,7 +12,6 @@ struct Puzzle
     // Methoden für X- und Y-Koordinate des derzeit ausgewählten Felds und die derzeit ausgewählte Zahl
     int CursorX;
     int CursorY;
-    int CursorNr;
 
     // Difficulty: 1 für Easy, 2 für Medium, 3 für Hard
     int Difficulty;
@@ -61,3 +60,9 @@ struct Puzzle fillSudoku(struct Puzzle, int[81]);
 void drawSudoku(struct Puzzle);
 void printNumber(int row, int column, struct Puzzle Sudoku);
 int cursorCheck(int row, int cursorRow, int column, int cursorColumn);
+
+// Methoden zum completionCheck
+struct Puzzle checkCompletion(struct Puzzle sudoku);
+int checkRows(struct Puzzle sudoku);
+int checkColumns(struct Puzzle sudoku);
+int checkBlocks(struct Puzzle sudoku);
